@@ -8723,14 +8723,14 @@ EOF
       *-*-darwin*)
 	# Don't allow lazy linking, it breaks C++ global constructors
 	# But is supposedly fixed on 10.4 or later (yay!).
-	if test "$tagname" = CXX ; then
-	  case ${MACOSX_DEPLOYMENT_TARGET-10.0} in
-	    10.[0123])
-	      func_append compile_command " ${wl}-bind_at_load"
-	      func_append finalize_command " ${wl}-bind_at_load"
-	    ;;
-	  esac
-	fi
+	# if test "$tagname" = CXX ; then
+	#   case ${MACOSX_DEPLOYMENT_TARGET-10.0} in
+	#     10.[0123])
+	#       func_append compile_command " ${wl}-bind_at_load"
+	#       func_append finalize_command " ${wl}-bind_at_load"
+	#     ;;
+	#   esac
+	# fi
 	# Time to change all our "foo.ltframework" stuff back to "-framework foo"
 	compile_deplibs=`$ECHO " $compile_deplibs" | $SED 's% \([^ $]*\).ltframework% -framework \1%g'`
 	finalize_deplibs=`$ECHO " $finalize_deplibs" | $SED 's% \([^ $]*\).ltframework% -framework \1%g'`
