@@ -15,7 +15,7 @@ function attachListeners() {
 }
 
 function loadUrl() {
-  common.naclModule.postMessage('getUrl:url_loader_success.html');
+  common.naclModule.postMessage('getUrl:mecabrc');
 }
 
 // Called by the common.js module.

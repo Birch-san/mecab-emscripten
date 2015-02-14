@@ -207,5 +207,9 @@ make && pnacl-finalize src/mecab -o /Users/birch/git/mecab-emscripten/web/demo/m
 ```
 
 ```shell
+make && pnacl-finalize mecab -o /Users/birch/git/mecab-emscripten/web/demo/mecab.final.pexe
+```
+
+```shell
 ./configure --with-charset=utf8 CC="pnacl-clang" CXXFLAGS="-std=gnu++11 -O2" CFLAGS="-O2" CPPFLAGS="-I/Users/birch/Documents/nacl_sdk/pepper_41/include -I/Users/birch/git/mecab-emscripten/lib/libiconv_1.14_pnacl/payload/include" CXX="pnacl-clang++" LDFLAGS="-L/Users/birch/Documents/nacl_sdk/pepper_41/lib/pnacl/Release -L/Users/birch/git/mecab-emscripten/lib/libiconv_1.14_pnacl/payload/lib -pthread" LIBS="-lppapi_simple -lppapi -lppapi_cpp -lnacl_io" --disable-shared AR_FLAGS="-crfu" AR="pnacl-ar" RANLIB="pnacl-ranlib" cross_compiling=maybe --without-libiconv-prefix && make clean && make && pnacl-finalize src/mecab -o /Users/birch/git/mecab-emscripten/web/demo/mecab.final.pexe
 ```
