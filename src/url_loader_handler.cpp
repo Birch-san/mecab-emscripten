@@ -11,6 +11,7 @@
 #include "ppapi/cpp/module.h"
 #include "ppapi/cpp/var.h"
 
+#include "url_loader.h"
 #include "url_loader_handler.h"
 
 #ifdef WIN32
@@ -22,12 +23,12 @@
 #pragma warning(disable : 4355)
 #endif
 
-URLLoaderHandler* URLLoaderHandler::Create(pp::Instance* instance,
+URLLoaderHandler* URLLoaderHandler::Create(URLLoaderInstance* instance,
                                            const std::string& url) {
   return new URLLoaderHandler(instance, url);
 }
 
-URLLoaderHandler::URLLoaderHandler(pp::Instance* instance,
+URLLoaderHandler::URLLoaderHandler(URLLoaderInstance* instance,
                                    const std::string& url)
     : instance_(instance),
       url_(url),

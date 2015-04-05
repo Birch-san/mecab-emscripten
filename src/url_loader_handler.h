@@ -5,6 +5,8 @@
 #ifndef URL_LOADER_HANDLER_H_
 #define URL_LOADER_HANDLER_H_
 
+#include "url_loader.h"
+
 #include <string>
 #include "ppapi/cpp/completion_callback.h"
 #include "ppapi/cpp/instance.h"
@@ -34,13 +36,13 @@ class URLLoaderHandler {
   // Creates instance of URLLoaderHandler on the heap.
   // URLLoaderHandler objects shall be created only on the heap (they
   // self-destroy when all data is in).
-  static URLLoaderHandler* Create(pp::Instance* instance_,
+  static URLLoaderHandler* Create(URLLoaderInstance* instance_,
                                   const std::string& url);
   // Initiates page (URL) download.
   void Start();
 
  private:
-  URLLoaderHandler(pp::Instance* instance_, const std::string& url);
+  URLLoaderHandler(URLLoaderInstance* instance_, const std::string& url);
   ~URLLoaderHandler();
 
   // Callback for the pp::URLLoader::Open().
@@ -73,7 +75,7 @@ class URLLoaderHandler {
                           const std::string& text,
                           bool success);
 
-  pp::Instance* instance_;  // Weak pointer.
+  URLLoaderInstance* instance_;  // Weak pointer.
   std::string url_;         // URL to be downloaded.
   pp::URLRequestInfo url_request_;
   pp::URLLoader url_loader_;  // URLLoader provides an API to download URLs.

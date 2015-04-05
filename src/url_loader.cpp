@@ -43,6 +43,7 @@
 PPAPI_SIMPLE_REGISTER_MAIN(ppapi_simple_main)*/
 
 #include "url_loader.h"
+#include "url_loader_handler.h"
 
 void URLLoaderInstance::HandleMessage(const pp::Var& var_message) {
   if (!var_message.is_string()) {
@@ -83,12 +84,12 @@ void URLLoaderInstance::PostMessage(const pp::Var& message) {
 
   std::stringstream ss;
 
-  //put arbitrary formatted data into the stream
-  ss << 4.5 << ", " << 4 << " whatever";
+  // //put arbitrary formatted data into the stream
+  // ss << 4.5 << ", " << 4 << " whatever";
   ss << "yo" << std::endl;
-  ss << mecab_do2(argv) << std::endl;
+  // ss << mecab_do2(argv) << std::endl;
 
-  //convert the stream buffer into a string
+  // //convert the stream buffer into a string
   std::string str = ss.str();
 
   // std::string str;

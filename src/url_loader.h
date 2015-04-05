@@ -6,11 +6,11 @@
 #define URL_LOADER_H_
 
 // #include <ppapi/cpp/instance.h>
-// #include <ppapi/cpp/instance.h>
+#include <ppapi/cpp/instance.h>
 #include <ppapi/cpp/module.h>
 #include <ppapi/cpp/var.h>
 
-#include "url_loader_handler.h"
+// #include "url_loader_handler.h"
 
 // These are the method names as JavaScript sees them.
 namespace {
