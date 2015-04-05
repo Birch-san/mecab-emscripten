@@ -80,7 +80,7 @@ void URLLoaderInstance::PostMessage(const pp::Var& message) {
       // std::cout << mecab_do(argc, &argv[i]);
   // }
 
-  char args[] = "help";
+  char args[] = "--help";
 
   std::stringstream sout;
   std::stringstream serr;
