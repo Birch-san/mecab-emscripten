@@ -159,6 +159,9 @@ void URLLoaderHandler::ReportResult(const std::string& fname,
   fflush(stdout);
   if (instance_) {
     pp::Var var_result(fname + "\n" + text);
+
+    // instance_->HandleCompletion(var_result);
+
     instance_->PostMessage(var_result);
   }
 }

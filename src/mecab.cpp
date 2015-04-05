@@ -3,6 +3,9 @@
 //
 //  Copyright(C) 2001-2006 Taku Kudo <taku@chasen.org>
 //  Copyright(C) 2004-2006 Nippon Telegraph and Telephone Corporation
+// #include <stdio.h>
+// #include <stdlib.h>
+#include <sstream>
 #include "mecab.h"
 #include "winmain.h"
 #include <iostream>
@@ -12,8 +15,14 @@
 #include <ppapi/cpp/var.h>
 // #include <ppapi_simple/ps_main.h>
 
+// Global variables
+// int g_argc;
+// char **g_argv;
+
 // int main(int argc, char **argv) {
-//   return mecab_do (argc, argv);
+//   g_argc = argc;
+//   g_argv = argv;
+//   // return mecab_do (argc, argv);
 // }
 
 /*int ppapi_simple_main(int argc, char** argv) {
@@ -56,6 +65,9 @@ class URLLoaderInstance : public pp::Instance {
   // download of URL.  In the event that errors occur, this method posts an
   // error string back to the browser.
   virtual void HandleMessage(const pp::Var& var_message);
+  virtual void PostMessage(const pp::Var& var_message) override;
+ private:  // Prevents erroneous use by other classes.
+  typedef pp::Instance super;
 };
 
 void URLLoaderInstance::HandleMessage(const pp::Var& var_message) {
@@ -81,6 +93,38 @@ void URLLoaderInstance::HandleMessage(const pp::Var& var_message) {
       }
     }
   }
+}
+
+void URLLoaderInstance::PostMessage(const pp::Var& var_message) {
+  // return mecab_do (argc, argv);
+  // super::PostMessage(var_message);
+  // pp::Var var_result(fname + "\n" + text);
+
+  // for (int i=0; i<argc; ++i) {
+      // std::cout << "Argument " << i << ": " << argv[i] << std::endl;
+      // std::cout << mecab_do(argc, &argv[i]);
+  // }
+
+  char *argv;
+
+  std::stringstream ss;
+
+  //put arbitrary formatted data into the stream
+  ss << 4.5 << ", " << 4 << " whatever";
+  ss << "yo" << std::endl;
+  ss << mecab_do2(argv) << std::endl;
+
+  //convert the stream buffer into a string
+  std::string str = ss.str();
+
+  // std::string str;
+  // str.append(mecab_do2(*g_argv));
+
+  pp::Var var_result(str);
+
+  // pp::Var var_result("what up");
+
+  super::PostMessage(var_result);
 }
 
 class URLLoaderModule : public pp::Module {
