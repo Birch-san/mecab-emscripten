@@ -65,7 +65,8 @@ class URLLoaderInstance : public pp::Instance {
   // download of URL.  In the event that errors occur, this method posts an
   // error string back to the browser.
   virtual void HandleMessage(const pp::Var& var_message);
-  virtual void PostMessage(const pp::Var& var_message) override;
+  using pp::Instance::PostMessage;
+  void PostMessage(const pp::Var& message);
  private:  // Prevents erroneous use by other classes.
   typedef pp::Instance super;
 };
@@ -95,9 +96,9 @@ void URLLoaderInstance::HandleMessage(const pp::Var& var_message) {
   }
 }
 
-void URLLoaderInstance::PostMessage(const pp::Var& var_message) {
+void URLLoaderInstance::PostMessage(const pp::Var& message) {
   // return mecab_do (argc, argv);
-  // super::PostMessage(var_message);
+  // super::PostMessage(message);
   // pp::Var var_result(fname + "\n" + text);
 
   // for (int i=0; i<argc; ++i) {
