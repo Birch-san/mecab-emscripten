@@ -1445,6 +1445,10 @@ int mecab_do3(char *args, std::stringstream *sout, std::stringstream *serr) {
     return EXIT_SUCCESS;
   }
 
+  // load_dictionary_resource() (from utils.cpp) feeds mecabrc and {dicdir}/dicrc into this param instance using param->load() (from param.cpp).
+  // we will need to rewrite param->load() to work with string or sstream instead of ifstream.
+  // we will pass in our mecabrc and dicrc to mecab_do3() I guess.
+  // hm, how will it load all the other files in `/usr/local/Cellar/mecab/0.996/lib/mecab/dic/ipadic`?
   if (!load_dictionary_resource(&param)) {
     *sout << param.what() << std::endl;
     return EXIT_SUCCESS;
