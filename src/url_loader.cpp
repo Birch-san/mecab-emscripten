@@ -80,20 +80,22 @@ void URLLoaderInstance::PostMessage(const pp::Var& message) {
       // std::cout << mecab_do(argc, &argv[i]);
   // }
 
-  char args[] = "-help";
+  char args[] = "help";
 
-  std::stringstream ss;
+  std::stringstream sout;
+  std::stringstream serr;
 
   // //put arbitrary formatted data into the stream
   // ss << 4.5 << ", " << 4 << " whatever";
   // ss << "yo" << std::endl;
-  int success = mecab_do2(args);
+  int success = mecab_do3(args, &sout, &serr);
   // ss << mecab_do3(argv) << std::endl;
 
   // //convert the stream buffer into a string
   // std::string str = ss.str();
 
-  std::string str = success ? "success" : "failure";
+  // std::string str = success ? "success" : "failure";
+  std::string str = sout.str();
   // str.append(mecab_do2(*g_argv));
 
   pp::Var var_result(str);
