@@ -106,8 +106,8 @@ We don't need shared anyway (I hope?), so get rid of Makefile switches that clan
 
 Default AR and ARFLAGS (Clang, cru) might work, but you need to add support to PNaCl for BSD long filenames.
 
-# AR_FLAGS="-crfu"
-# AR="pnacl-ar"
+`# AR_FLAGS="-crfu"`
+`# AR="pnacl-ar"`
 Mecab's `configure` needs to tell LLVM archiver to use `f` modifier, to avoid BSD long filenames
 Err, `f` flag doesn't work as advertised.
 Guess we just use the default AR and AR_FLAGS.
