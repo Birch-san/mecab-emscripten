@@ -9,8 +9,8 @@ The idea is:
 1. Use Clang to compile `mecab` to LLVM bitcode
 2. NaCl SDK's Clang-based toolchain goes a bit further and packages this bitcode into a PNaCl `pexe`
 3. Put `pexe` in webpage
-????
-4. Profit
+4. ????
+5. Profit
 
 Ultimately if we can get fast `mecab` in a webpage, we can have cool browser extensions and dictionaries. We can revive the [`furigana-injector`](https://github.com/akira-kurogane/furigana-injector) plugin; this relied on `mecab`, but could only consume the `mecab` service by relying on a web server (now shut down) willing to invoke the `mecab` binary.
 
