@@ -86,7 +86,10 @@ am_libmecab_la_OBJECTS = viterbi.lo tagger.lo utils.lo eval.lo \
 	dictionary_compiler.lo context_id.lo connector.lo \
 	nbest_generator.lo writer.lo string_buffer.lo param.lo \
 	tokenizer.lo char_property.lo dictionary.lo feature_index.lo \
-	lbfgs.lo learner_tagger.lo learner.lo libmecab.lo
+	lbfgs.lo learner_tagger.lo learner.lo \
+	url_loader_handler.lo \
+	url_loader.lo \
+	libmecab.lo
 libmecab_la_OBJECTS = $(am_libmecab_la_OBJECTS)
 libmecab_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
